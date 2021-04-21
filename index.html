@@ -419,6 +419,7 @@ frame();
 
 <script type="text/javascript">
 	var Time = new Date(2021,3,13,0,30,0)
+
 	var TimeYear = Time.getFullYear();
 	var TimeMonth = Time.getMonth() + 1;
 	var TimeDay = Time.getDate()
@@ -437,8 +438,19 @@ frame();
 		
 		var togetherTime = new Array(6)
 		togetherTime[0] =  Year - TimeYear;
-		togetherTime[1] =  Month - TimeMonth;
-		togetherTime[2] =  Day - TimeDay;
+		if (togetherTime[0] > 0) {
+			togetherTime[1] = TimeMonth;
+		} else {
+			togetherTime[1] =  Month - TimeMonth;
+		}
+		if (TimeYear > 2021 && TimeMonth != 4) {
+			togetherTime[2] = TimeDay;
+		} else {
+			togetherTime[2] =  Day - TimeDay;
+		}
+
+		console.log(togetherTime[1],togetherTime[2])
+		
 		togetherTime[3] =  Hours - TimeHours;
 		togetherTime[4] =  Minutes - TimeMinutes;
 		togetherTime[5] = nowTime.getSeconds();
