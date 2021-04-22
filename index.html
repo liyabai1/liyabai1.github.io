@@ -439,14 +439,14 @@ frame();
 		var togetherTime = new Array(6)
 		togetherTime[0] =  Year - TimeYear;
 		if (togetherTime[0] > 0) {
-			togetherTime[1] = TimeMonth;
+			togetherTime[1] = TimeMonth + 6;
 		} else {
 			togetherTime[1] =  Month - TimeMonth;
 		}
-		if (TimeYear > 2021 && TimeMonth != 4) {
-			togetherTime[2] = TimeDay;
+		if (TimeYear == 2021 && TimeMonth == 4) {
+			togetherTime[2] = Day - TimeDay;
 		} else {
-			togetherTime[2] =  Day - TimeDay;
+			togetherTime[2] = TimeDay;
 		}
 
 		console.log(togetherTime[1],togetherTime[2])
