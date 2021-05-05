@@ -112,8 +112,6 @@ html,body{
 <canvas id="canvas" width="825" height="631"></canvas>
 <div class="t">
 	<div class="text">和婉宝在一起的第<div>
-	<div class="year"></div>年
-	<div class="month"></div>月
 	<div class="day"></div>天
 	<div class="hours"></div>时
 	<div class="minutes"></div>分
@@ -419,49 +417,70 @@ frame();
 
 <script type="text/javascript">
 	var Time = new Date(2021,3,13,0,30,0)
-
-	var TimeYear = Time.getFullYear();
-	var TimeMonth = Time.getMonth() + 1;
-	var TimeDay = Time.getDate()
-	var TimeHours = Time.getHours()
-	var TimeMinutes = Time.getMinutes()
-	console.log(TimeYear,TimeMonth,TimeDay,TimeHours,TimeMinutes)
-
+	
 	function jisuan(){
-		var nowTime = new Date();	
-		var Year = nowTime.getFullYear();
-		var Month = nowTime.getMonth() + 1;
-		var Day = nowTime.getDate()
-		var Hours = nowTime.getHours()
-		var Minutes = nowTime.getMinutes()
-		console.log(Year,Month,Day,Hours,Minutes)
-		
-		var togetherTime = new Array(6)
-		togetherTime[0] =  Year - TimeYear;
-		if (togetherTime[0] > 0) {
-			togetherTime[1] = TimeMonth + 6;
-		} else {
-			togetherTime[1] =  Month - TimeMonth;
-		}
-		if (TimeYear == 2021 && TimeMonth == 4) {
-			togetherTime[2] = Day - TimeDay;
-		} else {
-			togetherTime[2] = TimeDay;
-		}
+		var nowTime = new Date();
+	
+		var toTime = nowTime - Time;
 
-		console.log(togetherTime[1],togetherTime[2])
-		
-		togetherTime[3] = Hours;
-		togetherTime[4] = Minutes;
-		togetherTime[5] = nowTime.getSeconds();
+		var togetherTime = new Array(4);
 
-		document.getElementsByClassName("year")[0].innerHTML = togetherTime[0]
-		document.getElementsByClassName("month")[0].innerHTML = togetherTime[1]
-		document.getElementsByClassName("day")[0].innerHTML = togetherTime[2]
-		document.getElementsByClassName("hours")[0].innerHTML = togetherTime[3]
-		document.getElementsByClassName("minutes")[0].innerHTML = togetherTime[4]
-		document.getElementsByClassName("seconds")[0].innerHTML = togetherTime[5]
+		togetherTime[0] = Math.floor( toTime/(1000 * 60 * 60 * 24) ) //天
+
+
+		var l1 = toTime%(1000 * 60 * 60 * 24) //计算出相差天数后剩下的毫秒数
+		togetherTime[1] = Math.floor( l1/(1000*60*60) ) //时
+
+		var l2 = l1%(1000*60*60) //计算出相差小时后剩下的毫秒数
+		togetherTime[2] = Math.floor( l2/(1000*60) )
+		
+
+		var l3 = l2%(1000*60) //计算出相差分钟后剩下的毫秒数
+		togetherTime[3] = Math.floor( l3/1000 )
+		console.log(togetherTime)
+
+		document.getElementsByClassName("day")[0].innerHTML = togetherTime[0]
+		document.getElementsByClassName("hours")[0].innerHTML = togetherTime[1]
+		document.getElementsByClassName("minutes")[0].innerHTML = togetherTime[2]
+		document.getElementsByClassName("seconds")[0].innerHTML = togetherTime[3]
 	}
+	
+
+	// function jisuan(){
+	// 	var nowTime = new Date();	
+	// 	var Year = nowTime.getFullYear();
+	// 	var Month = nowTime.getMonth() + 1;
+	// 	var Day = nowTime.getDate()
+	// 	var Hours = nowTime.getHours()
+	// 	var Minutes = nowTime.getMinutes()
+	// 	console.log(Year,Month,Day,Hours,Minutes)
+		
+	// 	var togetherTime = new Array(6)
+	// 	togetherTime[0] =  Year - TimeYear;
+	// 	if (togetherTime[0] > 0) {
+	// 		togetherTime[1] = TimeMonth;
+	// 	} else {
+	// 		togetherTime[1] =  Month - TimeMonth;
+	// 	}
+	// 	if (TimeYear == 2021 && TimeMonth == 4) {
+	// 		togetherTime[2] = Day - TimeDay;
+	// 	} else {
+	// 		togetherTime[2] = Day;
+	// 	}
+
+	// 	console.log(togetherTime[1],togetherTime[2])
+		
+	// 	togetherTime[3] = Hours;
+	// 	togetherTime[4] = Minutes;
+	// 	togetherTime[5] = nowTime.getSeconds();
+
+	// 	document.getElementsByClassName("year")[0].innerHTML = togetherTime[0]
+	// 	document.getElementsByClassName("month")[0].innerHTML = togetherTime[1]
+	// 	document.getElementsByClassName("day")[0].innerHTML = togetherTime[2]
+	// 	document.getElementsByClassName("hours")[0].innerHTML = togetherTime[3]
+	// 	document.getElementsByClassName("minutes")[0].innerHTML = togetherTime[4]
+	// 	document.getElementsByClassName("seconds")[0].innerHTML = togetherTime[5]
+	// }
 
 	setInterval("jisuan()",1000)
 
