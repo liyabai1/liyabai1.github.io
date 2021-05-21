@@ -490,7 +490,7 @@ frame();
 	jisuan();//不在循环啦
 	
 	var T = jisuan();
-	
+	console.log("之前的时间",T)
 	var nTime;
 	
 	//当你输入continueLove()的时候，请重新开始。
@@ -501,6 +501,7 @@ frame();
 	function cont(){
 		var ntime = new Date();
 		var contTime = ntime - nTime;
+		console.log("继续时间",conTime)
 		var allTime = T + contTime;
 		
 		var togetherTime = new Array(4);
