@@ -419,8 +419,10 @@ frame();
 	var Time = new Date(2021,3,13,0,30,0)
 	
 	function jisuan(){
-		var nowTime = new Date();
-	
+		//var nowTime = new Date();
+		
+		var nowTime = new Date(2021,4,19,21,12,0)
+		
 		var toTime = nowTime - Time;
 
 		var togetherTime = new Array(4);
@@ -443,6 +445,8 @@ frame();
 		document.getElementsByClassName("hours")[0].innerHTML = togetherTime[1]
 		document.getElementsByClassName("minutes")[0].innerHTML = togetherTime[2]
 		document.getElementsByClassName("seconds")[0].innerHTML = togetherTime[3]
+		
+		return toTime;
 	}
 	
 
@@ -482,8 +486,46 @@ frame();
 	// 	document.getElementsByClassName("seconds")[0].innerHTML = togetherTime[5]
 	// }
 
-	setInterval("jisuan()",1000)
+	//setInterval("jisuan()",1000)
+	jiusan();//不在循环啦
+	
+	var T = Time - new Date(2021,4,19,21,12,0);
+	
+	var nTime;
+	
+	//当你输入continueLoe()的时候，请重新开始。
+	function continueLove(){
+		nTime = new Date(); //捕捉你输入的时间
+		cont();
+	}
+	function cont(){
+		var ntime = new Date();
+		var contTime = ntime - nTime;
+		var allTime = T + contTime;
+		
+		var togetherTime = new Array(4);
 
+		togetherTime[0] = Math.floor( allTime/(1000 * 60 * 60 * 24) ) //天
+
+
+		var l1 = allTime%(1000 * 60 * 60 * 24) //计算出相差天数后剩下的毫秒数
+		togetherTime[1] = Math.floor( l1/(1000*60*60) ) //时
+
+		var l2 = l1%(1000*60*60) //计算出相差小时后剩下的毫秒数
+		togetherTime[2] = Math.floor( l2/(1000*60) )
+		
+
+		var l3 = l2%(1000*60) //计算出相差分钟后剩下的毫秒数
+		togetherTime[3] = Math.floor( l3/1000 )
+		console.log(togetherTime)
+
+		document.getElementsByClassName("day")[0].innerHTML = togetherTime[0]
+		document.getElementsByClassName("hours")[0].innerHTML = togetherTime[1]
+		document.getElementsByClassName("minutes")[0].innerHTML = togetherTime[2]
+		document.getElementsByClassName("seconds")[0].innerHTML = togetherTime[3]
+	}
+	setInterval("cont()",1000)
+	
 </script>
 
 </body>
