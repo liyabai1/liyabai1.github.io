@@ -91,13 +91,18 @@ html,body{
 .t div{
 	display: inline-block;
 }
+.t .heart{
+	display:block;
+	
+}
 
+	
 </style>
 </head>
 	
 <body>
 	
-<!-- 	<div class="bigBox">
+	<div class="bigBox">
 		<div class="img1" style="background-image: url('imgs/img1.jpg')"></div>
 		<div class="img2" style="background-image: url('imgs/img2.jpg')"></div>
 		<div class="img3" style="background-image: url('imgs/img3.jpg')"></div>
@@ -107,10 +112,13 @@ html,body{
 		<div class="img7" style="background-image: url('imgs/img4.jpg')"></div>
 		<div class="img8" style="background-image: url('imgs/img1.jpg')"></div>
 		<div class="img9" style="background-image: url('imgs/img3.jpg')"></div>
-	</div> -->
+	</div>
 
 <canvas id="canvas" width="825" height="631"></canvas>
 <div class="t">
+	<div class = "heart">
+	如果你觉得还有希望的话，请按一下F12键（打开开发者控制工具），在console（或者”控制台”）输入continueLove()，时间会接着往下走。请你告诉我，我会改掉那段代码，让它一直走下去。
+	</div>
 	<div class="text">和婉宝在一起的第<div>
 	<div class="day"></div>天
 	<div class="hours"></div>时
@@ -490,7 +498,6 @@ frame();
 	jisuan();//不在循环啦
 	
 	var T = jisuan();
-	console.log("之前的时间",T)
 	var nTime;
 	
 	//当你输入continueLove()的时候，请重新开始。
@@ -501,7 +508,6 @@ frame();
 	function cont(){
 		var ntime = new Date();
 		var contTime = ntime - nTime;
-		console.log("继续时间",contTime)
 		var allTime = T + contTime;
 		
 		var togetherTime = new Array(4);
