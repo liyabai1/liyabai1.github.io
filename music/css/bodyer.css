@@ -1,0 +1,217 @@
+.bodyer{
+    width: 100%;
+    height: 550px;
+    /* background-color: rgb(247, 152, 152); */
+    position: relative;
+}
+.songsList{
+    display: inline-block;
+    height: 100%;
+    width: 875px;
+    /* background-color: sandybrown; */
+    position: absolute;
+    left: 0px;
+}
+.songsList .songsListHeader{
+    width: 100%;
+    height: 50px;
+    /* background-color: skyblue; */
+    box-shadow: 0px 0px 20px rgb(133, 133, 133);
+}
+.songsList .songsListHeader div{
+    display: inline-block;
+    /* 接上：开始布局歌曲列表头部信息栏样式 2021.05.30 00:08 */
+    line-height: 40px;
+    height: 40px;
+    margin-top: 5px;
+    font-weight: 1000;
+    font-size: 20px;
+    text-align: center;
+}
+.songsList .songsListHeader .songNameTip{
+    width: 450px;
+}
+.songsList .songsListHeader .singerTip{
+    width: 250px;
+    border-left: 1px solid rgb(133, 133, 133);
+    border-right: 1px solid rgb(133, 133, 133);
+    box-sizing: border-box;
+}
+.songsList .songsListHeader .timeTip{
+    width: 110px;
+}
+.bodyer .albumBox{
+    display: inline-block;
+    height: 100%;
+    width: 491px;
+    position: absolute;
+    right: 0px;
+}
+
+.songsList .songsListCont{
+    height: 500px;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.songsListCont::-webkit-scrollbar {/*滚动条整体样式*/
+
+    width: 10px;     /*高宽分别对应横竖滚动条的尺寸*/
+
+    height: 1px;
+
+}
+
+.songsListCont::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+
+    border-radius: 10px;
+
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+
+    background: rgb(133, 133, 133);
+
+}
+
+.songsListCont::-webkit-scrollbar-track {/*滚动条里面轨道*/
+
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+
+    border-radius: 10px;
+
+    background: #EDEDED;
+
+}
+
+
+.songsListCont li{
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    box-sizing: border-box;
+    list-style: none;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.songsListCont li:hover{
+    height: 60px;
+    line-height: 60px;
+    background-color: cornflowerblue;
+}
+.songsListCont li div{
+    display: inline-block;
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.songsListCont li div:nth-of-type(1){
+    width: 50px;
+    text-align: center;
+}
+.songsListCont li div:nth-of-type(2){
+    width: 400px;
+}
+.songsListCont li div:nth-of-type(3){
+    width: 250px;
+}
+.songsListCont li div:nth-of-type(4){
+    width: 110px;
+    text-align: center;
+}
+.songsListCont li div:nth-of-type(5){
+    width: 35px;
+    text-align: center;
+}
+.songsListCont li div img{
+    width: 24px;
+    height: 24px;
+    margin-top: 18px;
+}
+
+.bodyer .albumBox .album{
+    width: 100%;
+    height: 250px;
+    position: relative;
+}
+.bodyer .albumBox .album .albumImg{
+    display: inline-block;
+    width: 180px;
+    height: 150px;
+
+    position: absolute;
+    top: 50%;
+    margin-top: -75px;
+    left: 15px;
+}
+.bodyer .albumBox .album .albumImg img{
+    width: 150px;
+    height: 150px;
+    z-index: 12;
+    position: absolute;
+    background-color: rgb(192, 192, 192);
+}
+.bodyer .albumBox .album .albumImg div:nth-of-type(2){
+    width: 120px;
+    height: 120px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: rgba(236, 236, 236, 0.555);
+    left: 45px;
+    top: 15px;
+    position: absolute;
+    z-index: 11;
+}
+.bodyer .albumBox .album .albumImg div:nth-of-type(1){
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background-color: rgb(31, 31, 31);
+    left: 75px;
+    top: 30px;
+    position: absolute;
+    z-index: 10;
+}
+
+.bodyer .albumBox .album .albumInfo{
+    display: inline-block;
+    width: 250px;
+    height: 90px;
+    position: absolute;
+    top: 50%;
+    margin-top: -45px;
+    right: 0px;
+}
+.bodyer .albumBox .album .albumInfo p{
+    display: block;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 1000;
+    font-style: italic;
+}
+.bodyer .albumBox .lrcBox{
+    width: 100%;
+    height: 300px;
+    position: relative;
+    top: 0px;
+}
+.bodyer .albumBox .lrcBox .lrc{
+    width: 350px;
+    height: 240px;
+    margin: auto;
+    text-align: center;
+}
+.bodyer .albumBox .lrcBox .lrc p{
+    display: block;
+    height: 80px;
+    overflow: hidden;
+    color: rgb(100, 100, 100);
+    font-weight: 700;
+    text-align: center;
+}
+
