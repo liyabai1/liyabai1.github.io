@@ -69,7 +69,7 @@ var app = new Vue({
 
         //搜索上一页数据
         prePage: function () {
-            var offset = this.nowSearchPage - 1 - 1;
+            var offset = ( this.nowSearchPage-2 ) * 20;
             console.log(offset)
             this.nowSearchPage == 1 ? alert("已经是第一页啦！😛") : search(this.searchKeyWord,offset)
             function search(keyword,offset){
@@ -83,7 +83,7 @@ var app = new Vue({
                     },
                     success(res){
                         resView(res)
-                        app._data.nowSearchPage = offset + 1;
+                        app._data.nowSearchPage = app._data.nowSearchPage - 1;
 
                     }
                 })
@@ -92,7 +92,7 @@ var app = new Vue({
 
         //搜索下一页数据
         nextPage: function () {
-            var offset = this.nowSearchPage + 1 - 1;
+            var offset = this.nowSearchPage * 20;
             console.log(offset)
             search(this.searchKeyWord,offset)
             function search(keyword,offset){
@@ -106,7 +106,7 @@ var app = new Vue({
                     },
                     success(res){
                         resView(res)
-                        app._data.nowSearchPage = offset + 1;
+                        app._data.nowSearchPage = app._data.nowSearchPage + 1;
                     }
                 })
             }
