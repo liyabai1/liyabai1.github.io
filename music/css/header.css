@@ -60,6 +60,7 @@
     position: absolute;
     left: 20px;
     background-color: rgba(1, 1, 1, 0);
+    font-weight: 700;
 }
 .header .searchInput .searchTxt{
     display: inline-block;
