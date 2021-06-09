@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" lang="zh-en">
+	<meta name="description" content="设计导航网站">
+	<meta name="keywords" content="设计,UI,平面设计,创意">
+	<meta name="author" content="李YB">
+	<link rel="icon" type="image/x-icon" href="imgs/webicon.jpg">
+	<title>设计导航网站</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/nav.css">
+	<link rel="stylesheet" type="text/css" href="css/contentBox.css">
+	<style type="text/css">
+		blockquote, body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, input, legend, li, ol, p, pre, td, textarea, th, ul{
+			margin: 0px;
+			padding: 0px;
+		}
+		html{
+			width: 100%;
+			height: 100%
+		}
+		body{
+			width: 100%;
+			height: 100%;
+			background-color: rgba(230, 230, 230, 1);
+		}
+		.PageContent{
+			display: -webkit-flex;
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="bg"></div>
+	<div class="PageContent">
+		<div class="navBox">
+			<div class="logo">
+				<image src="imgs/logo.png"
+						style="width: 50px;"
+				/>
+				<h1>设计网站导航</h1>
+			</div>
+			<div class="navTxt">
+				<ul id="tag">
+					<li v-for="(item,index) in tags" :key="index">
+						<a :href="'#' + item.class">
+							<div class="navIcon">
+								<img :src="item.icon">
+							</div>
+							<div class="navTagName">{{item.tagName}}</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="contentBox">
+			<!-- 后续加入搜索 -->
+			<!-- <div class="search"></div>	 -->
+			<!-- 搜索的网站内容直接使用iframe显示 -->
+			<div class="webContentBox" id="webContent">
+				<div class="tagBox"  v-for="(item, index) in tag" :key="index" :id="item.class">
+					<div class="tagName">{{item.tagName}}</div>
+					<div class="webitemBox">
+						<li class="webItem" v-for="(webItems, index) in item.webItems" :key="webItems.webName">
+							<a :href="webItems.url" target="_blank">
+								<img :src="webItems.icon" />
+								<div class="webInfo">
+									<p :title="webItems.webName">{{webItems.webName}}</p>
+									<p :title="webItems.info">{{webItems.info}}</p>
+								</div>
+							</a>
+						</li>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
