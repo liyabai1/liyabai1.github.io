@@ -70,7 +70,7 @@ var tag = [
 	{
 		icon: "imgs/icon/JC.svg",
 		class: "JC",
-		tagName: "PS、AE教程",
+		tagName: "PS、Pr教程",
 		webItems: [
 			{
 				webName: "新CG儿",
