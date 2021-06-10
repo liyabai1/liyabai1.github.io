@@ -116,26 +116,61 @@ var tag = [
 				url: "https://www.newyorker.com/",
 				info: "《纽约客》的报道、简介、突发新闻、文化报道、播客、视频和漫画。"
 			},{
-				webName: "",
-				icon: "imgs/icon/CYWA/.png",
-				url: "",
+				webName: "itsnicethat",
+				icon: "imgs/icon/CYWA/itsnicethat.png",
+				url: "https://www.itsnicethat.com/",
+				info: "It\'s nice that "
+			},{
+				webName: "Deck of Briliance",
+				icon: "imgs/icon/CYWA/Deck.png",
+				url: "https://deckofbrilliance.com/zh-hans/",
+				info: "帮助创意专业人士产生点子"
+			},{
+				webName: "设计癖",
+				icon: "imgs/icon/CYWA/shejipi.png",
+				url: "https://www.shejipi.com/",
+				info: "关注设计癖 发现好设计"
+			},{
+				webName: "Voicer",
+				icon: "imgs/icon/CYWA/voicer.png",
+				url: "http://www.voicer.me/",
+				info: "分享设计和生活的美学"
+			},{
+				webName: "Fubiz Media",
+				icon: "imgs/icon/CYWA/FM.png",
+				url: "http://www.fubiz.net/contact/",
 				info: ""
 			},{
-				webName: "",
-				icon: "imgs/icon/CYWA/.png",
-				url: "",
-				info: ""
+				webName: "Gallery",
+				icon: "imgs/icon/CYWA/gallery.png",
+				url: "https://www.commarts.com/gallery",
+				info: "通讯艺术的项目。"
 			},{
-				webName: "",
-				icon: "imgs/icon/CYWA/.png",
-				url: "",
-				info: ""
+				webName: "We Heart It",
+				icon: "imgs/icon/CYWA/weheartit.png",
+				url: "https://weheartit.com/",
+				info: "时尚、壁纸、箴言、名人等等"
 			},{
-				webName: "",
-				icon: "imgs/icon/CYWA/.png",
-				url: "",
-				info: ""
-			},
+				webName: "文案狗",
+				icon: "imgs/icon/CYWA/wenangou.png",
+				url: "http://wenangou.com/",
+				info: "给文案🐶一点灵感"
+			},{
+				webName: "文案迷",
+				icon: "imgs/icon/CYWA/wenanmi.png",
+				url: "http://www.wenanmi.com/",
+				info: "文字是最好的表达方式"
+			},{
+				webName: "书格",
+				icon: "imgs/icon/CYWA/shuge.png",
+				url: "https://new.shuge.org/",
+				info: "有品位的数字古籍图书馆"
+			},{
+				webName: "Mv Cat",
+				icon: "imgs/icon/CYWA/mvcat.png",
+				url: "https://www.mvcat.com/",
+				info: "人生如戏，戏如人生，命由己造，相由心生。"
+			}
 			
 		]
 	}
