@@ -22,10 +22,7 @@
         }
         body{
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            width: 100%;
             overflow: auto;
         }
         .bg{
@@ -42,135 +39,145 @@
             z-index: -999;
         }
         #app{
+            display: inline-block;
             width: 1366px;
             height: 768px;
-            position: relative;
             background-color: rgba(224,223,223,0.3);
             border-radius: 5px;
+        }
+        .main{
+            min-width: 1366px;
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
         }
     </style>
 </head>
 <body>
     <div class="bg" id="bgimg" v-bind:style="bgimgUrl"></div>
-    <div id="app">
-        <!-- 头部logo和搜索界面 -->
-        <div class="header">
-            <div class="logo">  
-                <h1>
-                    <a href="javascript:()">
-                        <img src="img/null.png" alt="My music Web">
-                    </a>
-                </h1>
+    <div class="main">
+        <div id="app">
+            <!-- 头部logo和搜索界面 -->
+            <div class="header">
+                <div class="logo">  
+                    <h1>
+                        <a href="javascript:()">
+                            <img src="img/null.png" alt="My music Web">
+                        </a>
+                    </h1>
+                </div>
+                <div class="searchInput">
+                    <div class="inputBox">
+                        <div></div>
+                        <input type="text" id="searchKey" v-on:input="input_keywords">
+                        <div></div>
+                    </div>
+                    <div class="searchTxt" v-on:click="searchSong">
+                        <span>搜索</span>
+                    </div>
+                </div>
+                <img src="img/tanchu.png" title="弹出搜索结果" class="pop" @click="popSearBox">
             </div>
-            <div class="searchInput">
-                <div class="inputBox">
-                    <div></div>
-                    <input type="text" id="searchKey" v-on:input="input_keywords">
-                    <div></div>
+            <!-- 中间部分为歌曲列表&专辑封面&歌词 -->
+            <div class="bodyer">
+                <!-- 歌曲列表 -->
+                <div class="songsList">
+                    <div class="songsListHeader">
+                        <div class="songNameTip">歌曲</div>
+                        <div class="singerTip">歌手</div>
+                        <div class="timeTip">时长</div>
+                    </div>
+                    <!-- 内容 -->
+                    <div class="songsListCont">
+                        <li v-for="(item,index) in addedSongsList" :key="index" @click="playAddedSong(index,item)" :id="index">
+                            <div>{{index+1}}</div>
+                            <div :title="item.songName">{{item.songName}}</div>
+                            <div :title="item.singer">{{item.singer}}</div>
+                            <div :title="item.songTime">{{item.songTime}}</div>
+                            <div @click.stop="delSong(event)" :id="item.index">
+                                <img src="img/del.png" title="删除此歌曲">
+                            </div>
+                        </li>
+                        
+                    </div>
                 </div>
-                <div class="searchTxt" v-on:click="searchSong">
-                    <span>搜索</span>
+                <!-- 专辑封面&歌词 -->
+                <div class="albumBox">
+                    <div class="album">
+                        <div class="albumImg">
+                            <div></div>
+                            <div></div>
+                            <img :src="nowSong.imgUrl">
+                        </div>
+                        <div class="albumInfo">
+                            <p>歌曲：{{nowSong.songName}}</p>
+                            <p>歌手：{{nowSong.singer}}</p>
+                        </div>
+                    </div>
+                    <div class="lrcBox">
+                        <div class="lrc">
+                            <p>歌词部分</p>
+                            <p>歌词部分</p>
+                            <p>歌词部分</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <img src="img/tanchu.png" title="弹出搜索结果" class="pop" @click="popSearBox">
-        </div>
-        <!-- 中间部分为歌曲列表&专辑封面&歌词 -->
-        <div class="bodyer">
-            <!-- 歌曲列表 -->
-            <div class="songsList">
-                <div class="songsListHeader">
-                    <div class="songNameTip">歌曲</div>
-                    <div class="singerTip">歌手</div>
-                    <div class="timeTip">时长</div>
+            <!-- 底部为各个控制组件 -->
+            <div class="player" id="player">
+                <div class="ctrPlaySong">
+                    <div class="preSong" title="上一曲" @click="preSong"></div>
+                    <div v-if="playing" class="playSong" title="暂停" @click="play"></div>
+                    <div v-else class="pauseSong" title="播放" @click="play"></div>
+                    <div class="nextSong" title="下一曲" @click="nextSong"></div>
                 </div>
-                <!-- 内容 -->
-                <div class="songsListCont">
-                    <li v-for="(item,index) in addedSongsList" :key="index" @click="playAddedSong(index,item)" :id="index">
-                        <div>{{index+1}}</div>
-                        <div :title="item.songName">{{item.songName}}</div>
-                        <div :title="item.singer">{{item.singer}}</div>
-                        <div :title="item.songTime">{{item.songTime}}</div>
-                        <div @click.stop="delSong(event)" :id="item.index">
-                            <img src="img/del.png" title="删除此歌曲">
+                <div class="progressBox">
+                    <div class="nowTime">{{nowTime}}</div>
+                    <div class="proBar">
+                        <div class="allTimeBar"></div>
+                        <div class="nowTimeBar" :style="{width: proBar}"></div>
+                    </div>
+                    <div class="allTime">{{nowSong.songTime}}</div>
+                </div>
+                <div class="playModeBox">
+                    <div class="playMode liebiao" v-if="playMode == 1" title="列表循环" @click="changePlayMode"></div>
+                    <div class="playMode suiji" v-else-if="playMode == 2" title="随机播放" @click="changePlayMode"></div>
+                    <div class="playMode danqu" v-else-if="playMode == 3" title="单曲循环"@click="changePlayMode"></div>
+                    <!-- 控制音量 -->
+                    <!-- <div class="volIcon"></div>
+                    <div class="volBarBox">
+                        <div class="volBar"></div>
+                        <div class="nowVol"></div>
+                    </div> -->
+                </div>
+            </div>
+            <!-- 搜索结果弹窗 -->
+            <div class="searchBox" v-if="displaySearch">
+                <div class="closeBtn" v-on:click = "closeSearch">
+                    <img src="img/closeBtn.png" title="关闭搜索弹窗">
+                </div>
+                <div class="searchHeader">
+                    <div>歌曲</div>
+                    <div>歌手</div>
+                    <div>时长</div>
+                </div>
+                <div class="searchResList" id="searchList">
+                    <li v-for = "(item,index) in searchRes" :key="index" :id="item.id" @click="playNow(index,item)">
+                        <span v-bind:title="item.songName">{{item.songName}}</span>
+                        <span v-bind:title="item.singer">{{item.singer}}</span>
+                        <span>{{item.songTime}}</span>
+                        <div @click.stop="addToList(event)">
+                            <img src="img/add.png" title="添加至播放列表" id="addBtn">
                         </div>
                     </li>
-                    
                 </div>
-            </div>
-            <!-- 专辑封面&歌词 -->
-            <div class="albumBox">
-                <div class="album">
-                    <div class="albumImg">
-                        <div></div>
-                        <div></div>
-                        <img :src="nowSong.imgUrl">
-                    </div>
-                    <div class="albumInfo">
-                        <p>歌曲：{{nowSong.songName}}</p>
-                        <p>歌手：{{nowSong.singer}}</p>
-                    </div>
+                <div class="searchBtnBox">
+                    <img src="img/prePage.png" title="上一页" v-on:click="prePage">
+                    <div class="nowPageIcon">{{nowSearchPage}}</div>
+                    <img src="img/nextPage.png" title="下一页" v-on:click="nextPage">
                 </div>
-                <div class="lrcBox">
-                    <div class="lrc">
-                        <p>歌词部分</p>
-                        <p>歌词部分</p>
-                        <p>歌词部分</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 底部为各个控制组件 -->
-        <div class="player" id="player">
-            <div class="ctrPlaySong">
-                <div class="preSong" title="上一曲" @click="preSong"></div>
-                <div v-if="playing" class="playSong" title="暂停" @click="play"></div>
-                <div v-else class="pauseSong" title="播放" @click="play"></div>
-                <div class="nextSong" title="下一曲" @click="nextSong"></div>
-            </div>
-            <div class="progressBox">
-                <div class="nowTime">{{nowTime}}</div>
-                <div class="proBar">
-                    <div class="allTimeBar"></div>
-                    <div class="nowTimeBar" :style="{width: proBar}"></div>
-                </div>
-                <div class="allTime">{{nowSong.songTime}}</div>
-            </div>
-            <div class="playModeBox">
-                <div class="playMode liebiao" v-if="playMode == 1" title="列表循环" @click="changePlayMode"></div>
-                <div class="playMode suiji" v-else-if="playMode == 2" title="随机播放" @click="changePlayMode"></div>
-                <div class="playMode danqu" v-else-if="playMode == 3" title="单曲循环"@click="changePlayMode"></div>
-                <!-- 控制音量 -->
-                <!-- <div class="volIcon"></div>
-                <div class="volBarBox">
-                    <div class="volBar"></div>
-                    <div class="nowVol"></div>
-                </div> -->
-            </div>
-        </div>
-        <!-- 搜索结果弹窗 -->
-        <div class="searchBox" v-if="displaySearch">
-            <div class="closeBtn" v-on:click = "closeSearch">
-                <img src="img/closeBtn.png" title="关闭搜索弹窗">
-            </div>
-            <div class="searchHeader">
-                <div>歌曲</div>
-                <div>歌手</div>
-                <div>时长</div>
-            </div>
-            <div class="searchResList" id="searchList">
-                <li v-for = "(item,index) in searchRes" :key="index" :id="item.id" @click="playNow(index,item)">
-                    <span v-bind:title="item.songName">{{item.songName}}</span>
-                    <span v-bind:title="item.singer">{{item.singer}}</span>
-                    <span>{{item.songTime}}</span>
-                    <div @click.stop="addToList(event)">
-                        <img src="img/add.png" title="添加至播放列表" id="addBtn">
-                    </div>
-                </li>
-            </div>
-            <div class="searchBtnBox">
-                <img src="img/prePage.png" title="上一页" v-on:click="prePage">
-                <div class="nowPageIcon">{{nowSearchPage}}</div>
-                <img src="img/nextPage.png" title="下一页" v-on:click="nextPage">
             </div>
         </div>
     </div>
