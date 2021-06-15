@@ -78,31 +78,36 @@ var tag = [
 				url: "https://www.newcger.com/",
 				info: "AE模板_视频素材_免费下载"
 			},{
-				webName: "",
-				icon: "imgs/icon/JC/.png",
-				url: "",
-				info: ""
+				webName: "哔哩哔哩",
+				icon: "imgs/icon/JC/bili.png",
+				url: "https://www.bilibili.com/",
+				info: "bilibili是国内知名的视频弹幕网站，这里有及时的动漫新番，活跃的ACG氛围，有创意的Up主。大家可以在这里找到许多欢乐。"
 			},{
-				webName: "",
-				icon: "imgs/icon/JC/.png",
-				url: "",
-				info: ""
+				webName: "cfxcamp素材库",
+				icon: "imgs/icon/JC/GFXCAMP.png",
+				url: "http://www.gfxcamp.com/",
+				info: "最新最热CG资源分享,龋齿一号GFXCamp,CG营地,视频素材,AE模板,CG教程,插件,软件"
 			},{
-				webName: "",
-				icon: "imgs/icon/JC/.png",
-				url: "",
-				info: ""
+				webName: "网易云课堂",
+				icon: "imgs/icon/JC/wyy.png",
+				url: "https://study.163.com/",
+				info: "悄悄变强大！！！"
 			},{
-				webName: "",
-				icon: "imgs/icon/JC/.png",
-				url: "",
-				info: ""
+				webName: "中国大学MOOC",
+				icon: "imgs/icon/JC/mooc.png",
+				url: "https://www.icourse163.org/",
+				info: "中国大学MOOC(慕课) 是国内优质的中文MOOC学习平台，由爱课程网携手网易云课堂打造。平台拥有包括985高校在内提供的千余门课程，其中首批获得认定的国家精品在线开放课程322门，占2017年获得认定课程总数的65.7%。每一个有提升愿望的人，都可以在这里学习优质高校课程，与名师零距离交流，并获得认证证书。"
 			},{
-				webName: "",
-				icon: "imgs/icon/JC/.png",
-				url: "",
-				info: ""
-			},
+				webName: "百度",
+				icon: "imgs/icon/JC/baidu.svg",
+				url: "http://www.baidu.com",
+				info: "全球领先的中文搜索引擎、致力于让网民更便捷地获取信息，找到所求。百度超过千亿的中文网页数据库，可以瞬间找到相关的搜索结果。"
+			},{
+				webName: "虎课网",
+				icon: "imgs/icon/JC/huke.png",
+				url: "https://huke88.com/",
+				info: "虎课网是超过1800万用户信赖的自学平台，拥有海量设计、绘画、摄影、办公软件、职业技能等优质的高清教程视频，用户可以根据行业和兴趣爱好，自主选择学习内容，每天免费学习一个教程。"
+			}
 		]
 	},
 	{
@@ -170,11 +175,83 @@ var tag = [
 				icon: "imgs/icon/CYWA/mvcat.png",
 				url: "https://www.mvcat.com/",
 				info: "人生如戏，戏如人生，命由己造，相由心生。"
+			},{
+				webName: "小鸡词典",
+				icon: "imgs/icon/CYWA/xjcd.png",
+				url: "https://jikipedia.com/",
+				info: "查网络流行语，就上小鸡词典。小鸡词典专注于网络流行语的收录和解释，以最快的速度在全网捕捉当下的网络热词。以简单明了，清晰易懂的形式，向用户介绍网络流行语的含义、来历、传播过程和引申义。用户不仅能够通过小鸡词典了解网络用语，还能接触到小众黑话、新梗热梗、弹幕用语、方言俚语等不同的流行文化，以及网友们自主创造的旧词新解等。"
 			}
 			
 		]
-	}
+	},
+	{
+		icon: "imgs/icon/SQ.svg",
+		class: "",
+		tagName: "设计社区",
+		webItems: [
+			{
+				webName: "豆瓣",
+				icon: "imgs/icon/CYSQ/douban.png",
+				url: "https://www.douban.com/",
+				info: "提供图书、电影、音乐唱片的推荐、评论和价格比较，以及城市独特的文化生活。"
+			}
+		]
+	},
+	{
+		icon: "imgs/icon/SC.svg",
+		class: "SC",
+		tagName: "素材资源",	//标签名称
+		webItems: [
+			{
+				webName: "沙沙野",	//网站名称
+				icon: "imgs/icon/SC/ssy.png",
+				url: "https://www.ssyer.com/",		//网站地址
+				info: "让作品遇见全世界"
+			}
+		]
+	},
+	// {
+	// 	icon: "",
+	// 	class: "",
+	// 	tagName: "",	//标签名称
+	// 	webItems: [
+	// 		{
+	// 			webName: "",	//网站名称
+	// 			icon: "",
+	// 			url: "",		//网站地址
+	// 			info: ""
+	// 		},{
+	// 			webName: "",
+	// 			icon: "",
+	// 			url: "",
+	// 			info: ""
+	// 		}
+	// 	]
+	// }
 ]
+
+// var yedu = [];
+
+// var reqYedu = new Promise(function(resolve,reject){
+// 	requsetData({
+// 		method: "GET",
+// 		url: "https://m.weibo.cn/api/container/getIndex?uid=2803301701&t=0&luicode=10000011&lfid=100103type%3D1%26q%3D%25E4%25BA%25BA%25E6%25B0%2591%25E6%2597%25A5%25E6%258A%25A5&containerid=2319122803301701_-_ordinary",
+// 		async: true,
+// 		data: {
+			
+// 		},
+// 		success(res){
+// 			console.log(res)
+// 		}
+// 	})
+// })
+
+// var wbRenMinRiBao = new Vue({
+// 	el: "#yedu",
+// 	data: {
+// 		yedu: yedu
+// 	}
+// })
 
 var navTag = new Vue({
 	el: "#tag",
