@@ -267,13 +267,22 @@ var webContentBox = new Vue({
 			//获取要添加网站的信息
 			var webInfo = tag[tagIndex].webItems[webItemIndex]
 			
+
+
 			//开始添加，1、修改vue中的data 2、修改缓存的数据
-			webContentBox.colWebItems.push(webInfo)
 
-			var sto = webContentBox.colWebItems
-				sto = JSON.stringify(sto)
+			if (!checkWebName(webInfo.url)) {	//存在
+				alert("收藏中已有该网址")
+			}else{	//缓存中不存在
+				webContentBox.colWebItems.push(webInfo)
 
-			localStorage.setItem("colWebSto",sto)
+				var sto = webContentBox.colWebItems
+					sto = JSON.stringify(sto)
+
+				localStorage.setItem("colWebSto",sto)
+			}
+
+			
 
 		},
 		delWeb: function (e) {
@@ -308,3 +317,24 @@ var webContentBox = new Vue({
 	
 	webContentBox.colWebItems = temp
  }
+
+ /**
+  * 
+  * @param {网站链接} webUrl 
+  * 检查该网站是否已经存在缓存中
+  * 如果存在，返回false,不存在返回true
+  */
+function checkWebName(webUrl){
+	if (!localStorage.getItem("colWebSto")) {
+		return true
+	}else{
+		let sto = localStorage.getItem("colWebSto")
+			sto = JSON.parse(sto)
+		for (let i in sto) {
+			if (webUrl == sto[i].url) {
+				return false
+			}
+		}
+		return true
+	}
+}
