@@ -6,6 +6,8 @@ window.onload = function mainStyle(){
 }
 
 
+
+
 var tag = [
 	{
 		icon: "imgs/icon/CYDP.svg",
@@ -230,28 +232,8 @@ var tag = [
 	// }
 ]
 
-// var yedu = [];
 
-// var reqYedu = new Promise(function(resolve,reject){
-// 	requsetData({
-// 		method: "GET",
-// 		url: "https://m.weibo.cn/api/container/getIndex?uid=2803301701&t=0&luicode=10000011&lfid=100103type%3D1%26q%3D%25E4%25BA%25BA%25E6%25B0%2591%25E6%2597%25A5%25E6%258A%25A5&containerid=2319122803301701_-_ordinary",
-// 		async: true,
-// 		data: {
-			
-// 		},
-// 		success(res){
-// 			console.log(res)
-// 		}
-// 	})
-// })
 
-// var wbRenMinRiBao = new Vue({
-// 	el: "#yedu",
-// 	data: {
-// 		yedu: yedu
-// 	}
-// })
 
 var navTag = new Vue({
 	el: "#tag",
@@ -260,9 +242,69 @@ var navTag = new Vue({
 	}
 })
 
+
 var webContentBox = new Vue({
 	el: "#webContent",
 	data: {
-		tag: tag
+		tag: tag,
+		colWebItems: []
+	},
+	methods: {
+		onMosOvr: function (e) {
+			e.currentTarget.lastChild.style.display = "block"
+		},
+		onMosOut: function (e) {
+			e.currentTarget.lastChild.style.display = "none"
+		},
+		addToCol: function (e) {
+
+			//获取需要添加网站在该分类内的第几个
+			var webItemIndex = e.currentTarget.parentNode.dataset.index
+
+			//获取要添加的网站是第几个分类
+			var tagIndex = e.currentTarget.parentNode.parentNode.parentNode.dataset.index
+			
+			//获取要添加网站的信息
+			var webInfo = tag[tagIndex].webItems[webItemIndex]
+			
+			//开始添加，1、修改vue中的data 2、修改缓存的数据
+			webContentBox.colWebItems.push(webInfo)
+
+			var sto = webContentBox.colWebItems
+				sto = JSON.stringify(sto)
+
+			localStorage.setItem("colWebSto",sto)
+
+		},
+		delWeb: function (e) {
+			//获取需要删除网站在该分类内的第几个
+			var webItemIndex = e.currentTarget.parentNode.dataset.index
+
+			//删除已添加的网址 1、修改vue中的data 2、修改缓存的数据
+			webContentBox.colWebItems.splice(webItemIndex,1)
+
+			var sto = webContentBox.colWebItems
+				sto = JSON.stringify(sto)
+
+			localStorage.setItem("colWebSto",sto)
+
+		}
 	}
 })
+
+/**
+ * 网站收藏
+ * 1、判断是否存在收藏网址的缓存，无缓存表示没有收藏
+ * 2、如缓存存在，将缓存添加至tag变量的第一个对象内
+ */
+ localStorage.getItem("colWebSto") ? addTag() : console.log("无收藏网址缓存")
+
+ /**
+  * 添加缓存至tag变量内
+  */
+ function addTag(){
+	var temp = localStorage.getItem("colWebSto")
+		temp = JSON.parse(temp)
+	
+	webContentBox.colWebItems = temp
+ }
