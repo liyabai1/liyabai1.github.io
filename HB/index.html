@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        ul{
+            list-style: none;
+            display: block;
+            margin: auto;
+            position: relative;
+        }
+        li{
+            position: absolute;
+            /* background-color: royalblue; */
+            background-size: 100% 100%;
+        }
+        .main{
+            width: 600px;
+            margin: auto;
+            /* background-color: rgb(121, 112, 112); */
+            margin-top: 10px;
+        }
+        .main .bgimg{
+            display: block;
+            margin: auto;
+        }
+        .cakeBox{
+            animation: zhuan 10s linear infinite;
+            transform-style: preserve-3d;
+        }
+        @keyframes zhuan {
+            from {transform: rotateX(-20deg) rotateY(0deg) ;}
+            to {transform: rotateX(-20deg) rotateY(360deg) ;}
+        }
+        @-webkit-keyframes zhuan{
+            from {transform: rotateX(-20deg) rotateY(0deg);}
+            to {transform: rotateX(-20deg) rotateY(360deg);}
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <img class="bgimg" src="HBbgimg.png" alt="" height="100px" width="300px">
+        <div class="cakeBox">
+
+        </div>
+    </div>
+</body>
+<script>
+
+// 给蛋糕整体创建每一层 => ul
+var cakeBox = document.getElementsByClassName("cakeBox")
+
+/** 
+ * 创建每一层的蛋糕 => ul标签
+ * ul内部由num个li标签组成，逐级递增
+ */
+function creatPerFloorCake (num) {
+    // 首先for循环创建ul标签
+    // 内部在使用for循环创建li标签
+    for (let i = 0; i < num; i++ ) {
+
+        let UL = document.createElement("ul")
+
+        for (let j = 0; j < (i+1) * 4; j++) {
+
+            let LI = document.createElement("li")
+
+            LI.setAttribute("li-index",j)
+
+            //定义每一层的长宽，初始值为宽80,长120 后面依次逐层递加20
+            LI.style.width = `${60 + i * 20}px`
+            LI.style.height = `${90 + i * 20}px`
+            
+            //定义每一个li的变换方式
+            LI.style.transform = `rotateY(${360/((i+1) * 4) * j}deg) translateZ(${50 + i * 50}px)`    //依据每一层的个数，计算旋转角度
+
+            // 每5个一轮回背景图
+            if (num - i == 5) {
+                LI.style.backgroundImage = `url(caomei.png)`
+            }
+            if (num - i == 4) {
+                LI.style.backgroundImage = `url(boluo.png)`
+            }
+            if (num - i == 3) {
+                LI.style.backgroundImage = `url(yingtao.png)`
+            }
+            if (num - i == 2) {
+                LI.style.backgroundImage = `url(xigua.png)`
+            }
+            if (num - i == 1) {
+                LI.style.backgroundImage = `url(juzi.png)`
+            }
+
+            UL.appendChild(LI);
+        }
+        UL.setAttribute("ul-index",i)
+        UL.style.width = `${80 + i * 20}px`
+        UL.style.height = `${90 + i * 20}px`
+        cakeBox[0].appendChild(UL)
+    }
+}
+creatPerFloorCake(5)
+const AUDIO = new Audio()
+AUDIO.src = "https://music.163.com/song/media/outer/url?id=41648129.mp3"
+AUDIO.autoplay = true;
+AUDIO.play()
+AUDIO.loop = true;
+</script>
+</html>
