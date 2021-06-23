@@ -10,6 +10,9 @@
             margin: 0px;
             padding: 0px;
         }
+        body{
+            position: relative;
+        }
         ul{
             list-style: none;
             display: block;
@@ -24,6 +27,7 @@
         .main{
             width: 600px;
             margin: auto;
+            
             /* background-color: rgb(121, 112, 112); */
             margin-top: 10px;
         }
@@ -43,6 +47,30 @@
             from {transform: rotateX(-20deg) rotateY(0deg);}
             to {transform: rotateX(-20deg) rotateY(360deg);}
         }
+        .barrage{
+            position: fixed;
+        }
+        .barrage p{
+            z-index: 99;
+            display: inline-block;
+            min-width: 300px;
+            position: fixed;
+            top: 0px;
+            /* animation: ma 10s infinite linear; */
+            /* animation-duration: 10s; */
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            left: -400px;
+        }
+        @keyframes ma {
+            from{ left: -400px; }
+            to{left: 100%;}
+        }
+        .playBtn{
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -51,6 +79,17 @@
         <div class="cakeBox">
 
         </div>
+    </div>
+    <div class="barrage">
+        <p>祝你22岁快乐</p>
+        <p>破壳快乐🎂</p>
+        <p>要努力，要酷</p>
+        <p>M78星云全体奥特曼祝你生日快乐</p>
+        <p>广州彭于晏发来祝福✉️</p>
+        <p>小新没有蜡笔发来祝福：Happy Birthday</p>
+    </div>
+    <div class="playBtn">
+        <input type="button" value="播放音乐" onclick="playMusic()">
     </div>
 </body>
 <script>
@@ -83,35 +122,126 @@ function creatPerFloorCake (num) {
             LI.style.transform = `rotateY(${360/((i+1) * 4) * j}deg) translateZ(${50 + i * 50}px)`    //依据每一层的个数，计算旋转角度
 
             // 每5个一轮回背景图
-            if (num - i == 5) {
-                LI.style.backgroundImage = `url(caomei.png)`
-            }
-            if (num - i == 4) {
-                LI.style.backgroundImage = `url(boluo.png)`
-            }
-            if (num - i == 3) {
-                LI.style.backgroundImage = `url(yingtao.png)`
-            }
-            if (num - i == 2) {
-                LI.style.backgroundImage = `url(xigua.png)`
-            }
-            if (num - i == 1) {
-                LI.style.backgroundImage = `url(juzi.png)`
+            switch ( i % 5 ){
+                case 0:
+                    LI.style.backgroundImage = `url(caomei.png)`
+                    break;
+                case 1:
+                    LI.style.backgroundImage = `url(boluo.png)`
+                    break;
+                case 2:
+                    LI.style.backgroundImage = `url(yingtao.png)`
+                    break;
+                case 3:
+                    LI.style.backgroundImage = `url(xigua.png)`
+                    break;
+                case 4:
+                    LI.style.backgroundImage = `url(juzi.png)`
+                    break;
+                
             }
 
             UL.appendChild(LI);
         }
+
+        //创建每层蛋糕的顶部封盖
+        var cover = document.createElement("li")
+        cover.style.width = `${(50 + i * 50) * 2}px`;
+        cover.style.height = `${(50 + i * 50) * 2}px`;
+        cover.style.borderRadius = `50%`;
+        cover.style.backgroundColor = "#fff";
+        cover.style.transform = `rotateX(90deg) translateZ(${50 + i * 50}px) translateX(${-(20 + i * 40)}px) `
+        UL.appendChild(cover)
+        
         UL.setAttribute("ul-index",i)
         UL.style.width = `${80 + i * 20}px`
         UL.style.height = `${90 + i * 20}px`
         cakeBox[0].appendChild(UL)
     }
 }
-creatPerFloorCake(5)
-const AUDIO = new Audio()
-AUDIO.src = "https://music.163.com/song/media/outer/url?id=41648129.mp3"
-AUDIO.autoplay = true;
-AUDIO.play()
-AUDIO.loop = true;
+
+
+var AUDIO = new Audio()
+    AUDIO.autoplay = true;
+new Promise(function(resolve){
+    // 判断用户需要输入的蛋糕层数
+    var input = window.prompt("请问你想要多大的蛋糕？不建议大于10", "5")
+    if (!input) {
+        alert("请输入数字哦。")
+        location.reload()
+    } else {
+        
+        AUDIO.src = "https://music.163.com/song/media/outer/url?id=41648129.mp3"
+        
+        AUDIO.loop = true;
+        AUDIO.play()
+
+        resolve(input)  
+    }
+}).then(function (input) {
+    
+    var inputNum = Number(input.trim());
+    inputNum > 10 ? 10 : inputNum
+    if (typeof inputNum == "number" && !isNaN(inputNum)) {
+    console.log("执行")
+    creatPerFloorCake(inputNum)
+
+    document.querySelector("body").style.backgroundColor = "#FFC0CB"
+    
+    } else {
+        alert("请输入数字哦。")
+        location.reload()
+    }
+
+})
+
+
+    // // 判断用户需要输入的蛋糕层数
+    // var input = window.prompt("请问你想要多大的蛋糕？不建议大于10", "5")
+    
+    // if (!input) {
+    //     alert("请输入数字哦。")
+    //     location.reload()
+    // } else {
+
+
+    //     // const AUDIO = new Audio()
+    //     // AUDIO.src = "https://music.163.com/song/media/outer/url?id=41648129.mp3"
+    //     // AUDIO.autoplay = true;
+    //     // AUDIO.loop = true;
+    //     // console.log(AUDIO)
+    //     var inputNum = Number(input.trim());
+    //     inputNum > 10 ? 10 : inputNum
+    //     if (typeof inputNum == "number" && !isNaN(inputNum)) {
+    //     console.log("执行")
+    //     creatPerFloorCake(inputNum)
+
+    //     document.querySelector("body").style.backgroundColor = "#FFC0CB"
+        
+    //     } else {
+    //         alert("请输入数字哦。")
+    //         location.reload()
+    //     }
+    // } 
+
+
+//文字跑马灯效果
+function ma() {
+    var textArr = document.getElementsByClassName("barrage");
+        textArr = document.querySelectorAll("p")
+        console.log(textArr)
+    textArr.forEach(item => {
+        item.style.top = `${Math.random()*300 + 5}px`
+        item.style.animationName = 'ma'
+        item.style.animationDelay = `${Math.random() * 5 + 1}s`
+        item.style.animationDuration = `${Math.random() * 10 + 10}s`
+    });
+}
+ma()
+const audio = new Audio()
+audio.autoplay = true
+function playMusic() {
+    audio.src = "https://music.163.com/song/media/outer/url?id=41648129.mp3"
+}
 </script>
 </html>
