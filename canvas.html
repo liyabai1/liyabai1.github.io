@@ -108,10 +108,24 @@ var clearLeft = 0; clearTop = 0;
         perTop = ev.clientY;
     }
 
-    
-
  })
+document.body.addEventListener("touchmove",function(e){
+    let ev = e || event;
 
+    let clientx = ev.touches[0].clientX,
+        clienty = ev.touches[0].clientY;
+    console.log("left位置：",clientx, "top位置：", clienty)
+
+    if (Math.abs(clientx - perLeft) > 25 || Math.abs(clienty - perTop) > 25) {
+        creatHeartAtMouse(5,false,50,3,{left:clientx,top:clienty})
+
+        clearLeft = perLeft;
+        clearTop = perTop;
+
+        perLeft = clientx;
+        perTop = clienty;
+    }
+})
 </script>
 
 </body>
