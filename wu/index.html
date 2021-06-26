@@ -10,6 +10,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/nav.css">
 	<link rel="stylesheet" type="text/css" href="css/contentBox.css">
+	<!-- <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"> -->
+	</script>
 	<style type="text/css">
 		blockquote, body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, input, legend, li, ol, p, pre, td, textarea, th, ul{
 			margin: 0px;
@@ -31,9 +33,14 @@
 			width: 100%;
 			height: 100%;
 		}
+		#mycanvas{
+			position: absolute;
+			z-index: -1;
+		}
 	</style>
 </head>
 <body>
+	<canvas id="mycanvas"></canvas>
 	<div class="bg"></div>
 	<div class="PageContent">
 		<div class="navBox">
@@ -45,14 +52,6 @@
 			</div>
 			<div class="navTxt">
 				<ul id="tag">
-					<li>
-						<a href="#colWebBox">
-							<div class="navIcon">
-								<img src="imgs/icon/COL.svg">
-							</div>
-							<div class="navTagName">我的收藏</div>
-						</a>
-					</li>
 					<li v-for="(item,index) in tags" :key="index">
 						<a :href="'#' + item.class">
 							<div class="navIcon">
@@ -65,38 +64,14 @@
 			</div>
 		</div>
 		<div class="contentBox">
-
 			<!-- 后续加入搜索 -->
 			<!-- <div class="search"></div>	 -->
 			<!-- 搜索的网站内容直接使用iframe显示 -->
-
 			<div class="webContentBox" id="webContent">
-				<!-- 收藏网站 -->
-
-				<div class="tagBox" id="colWebBox">
-					<div class="tagName">我的收藏</div>
-					<div class="webitemBox">
-						<li class="webItem" v-for="(items,index) in colWebItems" :key="index" :data-index="index" @mouseenter="onMosOvr" @mouseleave="onMosOut">
-							<a :href="items.url" target="_blank">
-								<img :src="items.icon" />
-								<div class="webInfo">
-									<p :title="items.webName">{{items.webName}}</p>
-									<p :title="items.info">{{items.info}}</p>
-								</div>
-							</a>
-							<div class="delIcon" style="display: none;" @click="delWeb">
-								<img src="imgs/icon/del.svg" title="删除">
-							</div>
-						</li>
-					</div>
-				</div>
-
-				<!-- 收藏网站结束 -->
-
-				<div class="tagBox"  v-for="(item, index) in tag" :key="index" :id="item.class" :data-index="index">
+				<div class="tagBox"  v-for="(item, index) in tag" :key="index" :id="item.class">
 					<div class="tagName">{{item.tagName}}</div>
 					<div class="webitemBox">
-						<li class="webItem" v-for="(webItems, index) in item.webItems" :key="index" @mouseenter="onMosOvr" @mouseleave="onMosOut" :data-index="index">
+						<li class="webItem" v-for="(webItems, index) in item.webItems" :key="webItems.webName">
 							<a :href="webItems.url" target="_blank">
 								<img :src="webItems.icon" />
 								<div class="webInfo">
@@ -104,9 +79,6 @@
 									<p :title="webItems.info">{{webItems.info}}</p>
 								</div>
 							</a>
-							<div class="addIcon" style="display: none;" @click = "addToCol">
-								<img src="imgs/icon/add.svg" title="添加至收藏">
-							</div>
 						</li>
 					</div>
 				</div>
@@ -114,7 +86,11 @@
 		</div>
 	</div>
 	
-	
+
+	<!-- <script type="text/javascript" src="js/test.js"></script> -->
+	<script type="text/javascript" src="js/requestData.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/canvas.js"></script>
+
 </body>
 </html>
