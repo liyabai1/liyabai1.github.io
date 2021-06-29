@@ -375,7 +375,7 @@ var app = new Vue({
 
         //播放和暂停
         play:function(){
-            audio.currentTime = 170
+         
             app.playing = !app.playing;
 
             app.playing ? audio.play() : audio.pause()
