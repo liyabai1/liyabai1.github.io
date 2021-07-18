@@ -46,7 +46,6 @@
 }
 .webitemBox .webItem:hover{
 	border: 2px solid rgb(173, 173, 173);
-	color: rgb(178, 150, 245);
 	text-decoration: underline;
 	background-color: rgba(202, 186, 186, 0.7);
 }
