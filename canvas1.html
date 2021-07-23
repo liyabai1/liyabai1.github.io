@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		
+		canvas{
+			border: 1px solid #000;
+			box-sizing: border-box;
+			overflow: hidden;
+		}
+		#myCanvas_1{
+			display: block;
+		}
+		#myCanvas_2,#myCanvas_3{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="menu">
+		拖动人物拿到钥匙开门
+	</div>
+	<div class="gameBox">
+		<canvas id="myCanvas_1" width="600" height="600"></canvas>
+		<canvas id="myCanvas_2" width="600" height="600"></canvas>
+		<canvas id="myCanvas_3" width="600" height="600"></canvas>
+	</div>
+</body>
+<script type="text/javascript">
+var c1 = document.querySelector("#myCanvas_1")
+var c2 = document.querySelector("#myCanvas_2")
+var c3 = document.querySelector("#myCanvas_3")
+var ctx1 = c1.getContext("2d")
+var ctx2 = c2.getContext("2d")
+var ctx3 = c3.getContext("2d")
+
+// 每张画布的移动路径
+var canvas1_path = [], canvas2_path = [], canvas3_path = [];
+
+// 钥匙是否存在的状态
+let can1_hasKey = true, can2_hasKey = true, can3_hasKey = true;
+
+// 初始化canvas1第一关
+canvas1(ctx1,300-32,450,can1_hasKey)
+
+// 初始化canvas2第二关
+canvas2(ctx2,100-8,150,can2_hasKey)
+
+// 初始化canvas3第三关
+canvas3(ctx3,0,80-8,can3_hasKey)
+
+/** 
+ * 第一关  I
+ * canvas1鼠标拖拽事件
+ * @param {canvas} canvas对象
+ * @param {X} 人物移动的X坐标
+ * @param {Y} 人物移动的Y坐标
+ * @param {boolen} 钥匙是否存在 
+ * @return {array} 鼠标移动经过的点的坐标
+ */
+function canvas1(ctx,X,Y,hasKey){
+
+	//清理画布
+	ctx.clearRect(0,0,600,600)
+
+	// 地图
+	circle(200,0,300,"#000",ctx)
+	circle(200,600,300,"#000",ctx)
+
+	// 加载图片
+	let person = new Image(64,64),key = new Image(64,64),home = new Image(80,80);
+	person.src = "person.png";
+	key.src = "key.png";
+	home.src = "home.png"
+
+	person.onload = function () {
+		ctx.drawImage(person,X,Y)
+	}
+	home.onload = function () {
+		ctx.drawImage(home,300-40,0)
+	}
+
+	// 钥匙存在加载钥匙图片
+	if (hasKey) {
+		key.onload = function () {
+			ctx.drawImage(key,300-32,600-64)
+		}
+	}
+
+}
+
+c1.onmousedown = c1down;
+c1.ontouchstart = c1down;
+
+function c1down(event) {
+	// 获取当前点击的X,Y坐标值
+	let clickX = event.offsetX;
+	let clickY = event.offsetY;
+	// 判断当前鼠标是否点击在人物上
+	if (clickX >= 300-32 && clickX <= 300+32 && clickY >= 450 && clickY <= 450+64) {
+		console.log("可以执行移动操作")
+
+		c1.onmousemove = move;
+		c1.ontouchmove = move;
+
+		function move(event) {
+			console.log(event.offsetX,event.offsetY)
+			// 判断该当前鼠标是否进入了黑色区域
+			let x = event.offsetX;
+			let y = event.offsetY;
+
+			// 与左边圆对比，计算当前鼠标坐标系位置是否在左圆外
+			let leftCir = x*x + (y-300) * (y-300);
+			// 与右边圆对比
+			let rightCir = (x-600) * (x-600) + (y-300) * (y-300);
+
+			if (leftCir > 200*200 && rightCir > 200*200 ) {
+				console.log("在里面")
+				// 控制小人移动  并记录经过的路径
+				// 移动到钥匙地方，钥匙消失
+				if (x >= 300-32 && x <= 300+32 && y >= 600-64 && y <= 600) {
+					can1_hasKey = false
+				}
+				canvas1(ctx1,x-32,y-32,can1_hasKey)
+
+				// 当移动到门的地方，通关
+				if (x >= 300-40 && x <= 300+40 && y >= 0 && y <= 80 && can1_hasKey === false) {
+					// 所有的状态被初始化
+					c1.onmousemove = null
+					alert("恭喜通关")
+				}
+				
+				let path={x,y}
+				canvas1_path.push(path)
+			} else {
+				console.log("没在")
+
+				// 重置画面，会到初始状态下
+				can1_hasKey = true
+				canvas1(ctx1,300-32,450,can1_hasKey)
+
+				// 取消鼠标移动事件
+				c1.onmousemove = null
+
+				// 提示用户游戏结束
+				alert("GAME OVER!!")
+			}
+		}
+		c1.onmouseup = function (event) {
+			console.log(canvas1_path)
+			c1.onmousemove = null
+		}
+		c1.ontouchend = function (event) {
+			console.log(canvas1_path)
+			c1.onmousemove = null
+		}
+	}
+
+}
+
+
+/** 
+ * 第二关  
+ * canvas1鼠标拖拽事件
+ * @param {canvas} canvas对象
+ * @param {X} 人物移动的X坐标
+ * @param {Y} 人物移动的Y坐标
+ * @param {boolen} 钥匙是否存在 
+ * @return {array} 鼠标移动经过的点的坐标
+ */
+function canvas2(ctx,X,Y,hasKey){
+
+	//清理画布
+	ctx.clearRect(0,0,200,200)
+
+	// 地图
+	circle(80,0,200,"#000",ctx)
+	circle(80,200,200,"#000",ctx)
+	circle(40,60,70,"#000",ctx)
+	circle(40,140,70,"#000",ctx)
+
+
+	// 加载图片
+	let person = new Image(16,16),key = new Image(16,16),home = new Image(24,24);
+	person.src = "person.png";
+	key.src = "key.png";
+	home.src = "home.png"
+
+	person.onload = function () {
+		ctx.drawImage(person,X,Y)
+	}
+	home.onload = function () {
+		ctx.drawImage(home,100-12,200-24)
+	}
+
+	// 钥匙存在加载钥匙图片
+	if (hasKey) {
+		key.onload = function () {
+			ctx.drawImage(key,100-8,20)
+		}
+	}
+
+}
+
+c2.onmousedown = function (event) {
+
+	// 获取当前点击的X,Y坐标值
+	let clickX = event.offsetX;
+	let clickY = event.offsetY;
+
+	// 判断当前鼠标是否点击在人物上
+	if (clickX >= 92 && clickX <= 108 && clickY >= 150 && clickY <= 160) {
+		console.log("可以执行移动操作")
+
+		c2.onmousemove = function (event) {
+			// console.log(event.offsetX,event.offsetY)
+			// 判断该当前鼠标是否进入了黑色区域
+			let x = event.offsetX;
+			let y = event.offsetY;
+
+			// 与左下角大圆对比，计算当前鼠标坐标系位置是否在左下角大圆外  > 80 * 80 
+			let leftBigCir = x*x + (y-200) * (y-200);
+			// 与右边圆对比
+			let rightBigCir = (x-200) * (x-200) + (y-200) * (y-200);
+
+			// 与中间左边小圆对比，计算当前鼠标坐标系位置是否在中间左小圆外  > 40*40
+			let leftSmallCir = (x-60) * (x-60) + (y-70) * (y-70);
+			// 与右边圆对比
+			let rightSmallCir = (x-140) * (x-140) + (y-70) * (y-70);
+
+			if (leftBigCir >= 80*80 && rightBigCir >= 80*80 && leftSmallCir >= 40*40 && rightSmallCir >= 40*40) {
+				console.log("在里面")
+				// 控制小人移动  并记录经过的路径
+				// 移动到钥匙地方，钥匙消失
+				if (x >= 92 && x <= 108 && y >= 20 && y <= 20+16) {
+					can2_hasKey = false
+				}
+				canvas2(ctx2,x-8,y-8,can2_hasKey)
+
+				// 当移动到门的地方，通关
+				if (x >= 88 && x <= 112 && y >= 176 && y <= 200 &&  can2_hasKey === false) {
+					// 所有的状态被初始化
+					c2.onmousemove = null
+					alert("恭喜通关")
+				}
+				
+				let path={x,y}
+				canvas2_path.push(path)
+			} else {
+				console.log("没在")
+
+				// 重置画面，会到初始状态下
+				can2_hasKey = true
+				canvas2(ctx2,100-8,150,can2_hasKey)
+
+				// 取消鼠标移动事件
+				c2.onmousemove = null
+
+				// 提示用户游戏结束
+				alert("GAME OVER!!")
+			}
+		}
+		c2.onmouseup = function (event) {
+			console.log(canvas2_path)
+			c2.onmousemove = null
+		}
+	}
+
+}
+
+/** 
+ * 第三关  
+ * canvas1鼠标拖拽事件
+ * @param {canvas} canvas对象
+ * @param {X} 人物移动的X坐标
+ * @param {Y} 人物移动的Y坐标
+ * @param {boolen} 钥匙是否存在 
+ * @return {array} 鼠标移动经过的点的坐标
+ */
+function canvas3(ctx,X,Y,hasKey){
+
+	//清理画布
+	ctx.clearRect(0,0,200,200)
+
+	// 地图
+	circle(75,100,80,"#000",ctx)
+	
+
+
+	// 加载图片
+	let person = new Image(16,16),key = new Image(16,16),home = new Image(24,24);
+	person.src = "person.png";
+	key.src = "key.png";
+	home.src = "home.png"
+
+	person.onload = function () {
+		ctx.drawImage(person,X,Y)
+	}
+	home.onload = function () {
+		ctx.drawImage(home,200-24,80-12)
+	}
+
+	// 钥匙存在加载钥匙图片
+	if (hasKey) {
+		key.onload = function () {
+			ctx.drawImage(key,100-8,165)
+		}
+	}
+
+}
+c3.onmousedown = function (event) {
+
+	// 获取当前点击的X,Y坐标值
+	let clickX = event.offsetX;
+	let clickY = event.offsetY;
+
+	// 判断当前鼠标是否点击在人物上
+	if (clickX >= 0 && clickX <= 16 && clickY >= 72 && clickY <= 88) {
+		console.log("可以执行移动操作")
+
+		c3.onmousemove = function (event) {
+			// console.log(event.offsetX,event.offsetY)
+			// 判断该当前鼠标是否进入了黑色区域
+			let x = event.offsetX;
+			let y = event.offsetY;
+
+			// 与左下角大圆对比，计算当前鼠标坐标系位置是否在左下角大圆外  > 80 * 80 
+			let circle = (x-100) * (x-100) + (y-80) * (y-80)
+
+			if (circle >= 75*75) {
+				console.log("在里面")
+				// 控制小人移动  并记录经过的路径
+				// 移动到钥匙地方，钥匙消失
+				if (x >= 92 && x <= 108 && y >= 165 && y <= 181) {
+					can3_hasKey = false
+				}
+				canvas3(ctx3,x-8,y-8,can3_hasKey)
+
+				// 当移动到门的地方，通关
+				if (x >= 176 && x <= 200 && y >= 80-12 && y <= 80+12 &&  can3_hasKey === false) {
+					// 所有的状态被初始化
+					c3.onmousemove = null
+					alert("恭喜通关")
+					// 显示之前的路径
+				}
+				
+				let path={x,y}
+				canvas3_path.push(path)
+			} else {
+				console.log("没在")
+
+				// 重置画面，会到初始状态下
+				can3_hasKey = true
+				canvas3(ctx3,0,80-8,can3_hasKey)
+
+				// 取消鼠标移动事件
+				c3.onmousemove = null
+
+				// 提示用户游戏结束
+				alert("GAME OVER!!")
+			}
+		}
+		c3.onmouseup = function (event) {
+			console.log(canvas3_path)
+			c3.onmousemove = null
+		}
+	}
+
+}
+
+
+/** 
+ * 绘制圆
+ * @param {number} 半径 
+ * @param {number} 圆心x坐标
+ * @param {number} 圆心Y坐标
+ * @param {string} 填充颜色 格式为十六进制
+ */
+function circle(R,X,Y,color,ctx){
+	ctx.save();
+
+	ctx.beginPath();
+	ctx.fillStyle = color;
+	ctx.arc(X,Y,R,0,2*Math.PI);
+	ctx.stroke();
+	ctx.fill()
+
+	ctx.restore()
+}
+
+</script>
+</html>
