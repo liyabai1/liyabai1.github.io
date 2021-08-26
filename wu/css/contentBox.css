@@ -27,13 +27,14 @@
 }
 .tagBox .webitemBox{
 	width: 100%;
+	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-around;
-
+	justify-content: flex-start;
+	margin-top: 10px;
 }
 .webitemBox .webItem{
-	display: inline-block;
+	display: flex;
 	width: 250px;
 	height: 70px;
 	overflow: hidden;
@@ -41,10 +42,11 @@
 	border: 1px solid rgb(216, 216, 216);
 	font-family: fontM;
 	box-sizing: border-box;
+	flex-direction: row;
 }
 .webitemBox .webItem:hover{
 	border: 2px solid rgb(173, 173, 173);
-	color: rgb(178, 150, 245);
+	/*color: rgb(178, 150, 245);*/
 	text-decoration: underline;
 	background-color: rgba(202, 186, 186, 0.7);
 }
@@ -54,11 +56,11 @@
 	text-decoration: none;
 	flex-direction: row;
 	align-items: center;
-	width: 100%;
+	width: 228px;
 	height: 100%;
 }
 a:-webkit-any-link{
-	color: rgb(0, 0, 0);
+	color: black;
 }
 
 .webItem a img{
@@ -73,7 +75,7 @@ a:-webkit-any-link{
 	display: inline-block;
 	flex-direction: column;
 	align-items: flex-start;
-	width: 170px;
+	width: 160px;
 	height: 55px;
 	
 }
@@ -88,4 +90,20 @@ a:-webkit-any-link{
 	line-height: 36px;
 }
 
-
+.webItem .addIcon,.delIcon{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	overflow: hidden;
+	align-self: flex-start;
+	/* border: 1px #0dafff solid; */
+	border-radius: 10px;
+	box-sizing: border-box;
+	text-align: center;
+	cursor: pointer;
+}
+.webItem .addIcon img,.delIcon img{
+	width: 20px;
+	height: 20px;
+	margin: 0px;
+}
