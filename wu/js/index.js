@@ -212,6 +212,25 @@ var tag = [
 			}
 		]
 	},
+  {
+    icon: "imgs/icon/SC.svg",
+		class: "SJ",
+		tagName: "数据",	//标签名称
+		webItems: [
+			{
+				webName: "阿里研究院",	//网站名称https://www.dydata.io/
+				icon: "imgs/icon/SJ/ali.ico",
+				url: "http://www.aliresearch.com/",		//网站地址
+				info: "阿里研究院"
+			},
+      {
+				webName: "镝数聚",	//网站名称
+				icon: "imgs/icon/SJ/dishuju.ico",
+				url: "https://www.dydata.io/",		//网站地址
+				info: "镝数聚,大数据,行业数据,数据报告,数据服务,数据交易,数据市场,数据挖掘,数据分析,市场调研,官方数据,金融数据,数据新闻,数据传播,权威数据,数据集,数据平台,数据可视化,体育数据,娱乐数据"
+			}
+		]
+  }
 	// {
 	// 	icon: "",
 	// 	class: "",
