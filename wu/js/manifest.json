@@ -9,12 +9,12 @@
   "background_color": "#000000",
   "icons": [
     {
-      "src": "../icon/webicon.png",
+      "src": "../imgs/webicon.png",
       "sizes": "48x48",
       "type": "image/png"
     },
     {
-      "src": "../icon/webicon.png",
+      "src": "../imgs/webicon.png",
       "sizes": "144x144",
       "type": "image/png"
     }
