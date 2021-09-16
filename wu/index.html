@@ -146,6 +146,17 @@
 
 
   <script type="text/javascript" src="js/index.js"></script>
+  <script>
+    window.addEventListener('beforeinstallprompt', function (event) { // 监听到可安装事件，进行触发提醒用户
+      setTimeout(function () {
+        event.prompt()
+        event.userChoice //判断用户是否安装
+          .then(function (e) {
+            install = true
+          })
+      }, 2000)
+    }, { once: true })
+  </script>
 </body>
 
 </html>
