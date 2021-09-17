@@ -1,0 +1,22 @@
+{
+  "name": "老吴的网站导航",
+  "short_name": "网址导航",
+  "description": "老吴的网站导航",
+  "display": "standalone",
+  "orientation": "landscape",
+  "start_url": "/",
+  "theme_color": "#222222",
+  "background_color": "#000000",
+  "icons": [
+    {
+      "src": "../imgs/webicon.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "../imgs/webicon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
+}
