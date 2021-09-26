@@ -1,0 +1,86 @@
+{
+  "id": "2834414",
+  "name": "wu_web",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "275645",
+      "name": "设计规范",
+      "font_class": "design",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "1503737",
+      "name": "视频",
+      "font_class": "video",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "5404223",
+      "name": "教程1",
+      "font_class": "course",
+      "unicode": "e72e",
+      "unicode_decimal": 59182
+    },
+    {
+      "icon_id": "12331697",
+      "name": "数据",
+      "font_class": "data",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "13901301",
+      "name": "素材",
+      "font_class": "material",
+      "unicode": "e833",
+      "unicode_decimal": 59443
+    },
+    {
+      "icon_id": "23638823",
+      "name": "文案",
+      "font_class": "editor",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "1265478",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "5127558",
+      "name": "to-top",
+      "font_class": "toTop",
+      "unicode": "e834",
+      "unicode_decimal": 59444
+    },
+    {
+      "icon_id": "1183021",
+      "name": "添加",
+      "font_class": "add",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "2763902",
+      "name": "删除筛选项",
+      "font_class": "delete",
+      "unicode": "e7a5",
+      "unicode_decimal": 59301
+    },
+    {
+      "icon_id": "7399672",
+      "name": "汉堡图标",
+      "font_class": "more",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    }
+  ]
+}

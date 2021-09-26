@@ -1,0 +1,254 @@
+[
+  {
+    "icon": "icon-data",
+    "baseUrl": "./imgs/data/",
+    "class": "data",
+    "tagName": "数据",
+    "webItems": [
+      {
+        "webName": "阿里研究院",
+        "icon": "ali.png",
+        "url": "http://www.aliresearch.com/",
+        "description": "阿里研究院"
+      },
+      {
+        "webName": "镝数聚",
+        "icon": "dishuju.png",
+        "url": "https://www.dydata.io/",
+        "description": "镝数聚,大数据,行业数据,数据报告,数据服务,数据交易,数据市场,数据挖掘,数据分析,市场调研,官方数据,金融数据,数据新闻,数据传播,权威数据,数据集,数据平台,数据可视化,体育数据,娱乐数据"
+      }
+    ]
+  },
+  {
+    "icon": "icon-video",
+    "baseUrl": "./imgs/creativityVideo/",
+    "class": "creativityVideo",
+    "tagName": "创意短片",
+    "webItems": [
+      {
+        "webName": "V电影",
+        "icon": "Vfilm.png",
+        "url": "https://www.vmovier.com/",
+        "description": "高品质短片分享平台"
+      },
+      {
+        "webName": "新片场",
+        "icon": "newFilm.png",
+        "url": "https://www.xinpianchang.com/square",
+        "description": "发现全球优质视频与创作人，与百万创作人一起成长"
+      },
+      {
+        "webName": "NOWNESS",
+        "icon": "NOWNESS.png",
+        "url": "https://www.nowness.cn/",
+        "description": "全球创意影像圈"
+      },
+      {
+        "webName": "Sandwich",
+        "icon": "sandwich.png",
+        "url": "https://sandwich.co/",
+        "description": "科技电视广告视频发布平台"
+      },
+      {
+        "webName": "天空之城",
+        "icon": "tiankongzhicheng.png",
+        "url": "https://www.skypixel.com/",
+        "description": "全球航拍爱好者和专业摄影师的作品社区"
+      },
+      {
+        "webName": "火焰之美",
+        "icon": "fireBeautiful.png",
+        "url": "https://www.envisioningchemistry.cn/flames",
+        "description": "火焰之美——重现化学"
+      },
+      {
+        "webName": "Vimeo",
+        "icon": "vimeo.png",
+        "url": "https://vimeo.com/",
+        "description": "一体化视频解决方案"
+      },
+      {
+        "webName": "TVCBOOK",
+        "icon": "TVCBOOK.png",
+        "url": "https://www.tvcbook.com/",
+        "description": "你感兴趣的创意都在T站"
+      },
+      {
+        "webName": "shots",
+        "icon": "shots.png",
+        "url": "https://www.shots.net/",
+        "description": "最前沿的创意"
+      },
+      {
+        "webName": "AbanCommercials",
+        "icon": "AbanCommer.png",
+        "url": "https://abancommercials.com/",
+        "description": "美国电视广告"
+      }
+    ]
+  },
+  {
+    "icon": "icon-course",
+    "baseUrl": "./imgs/course/",
+    "class": "course",
+    "tagName": "PS、Pr教程",
+    "webItems": [
+      {
+        "webName": "新CG儿",
+        "icon": "CG.png",
+        "url": "https://www.newcger.com/",
+        "description": "AE模板_视频素材_免费下载"
+      },
+      {
+        "webName": "哔哩哔哩",
+        "icon": "bili.png",
+        "url": "https://www.bilibili.com/",
+        "description": "bilibili是国内知名的视频弹幕网站，这里有及时的动漫新番，活跃的ACG氛围，有创意的Up主。大家可以在这里找到许多欢乐。"
+      },
+      {
+        "webName": "cfxcamp素材库",
+        "icon": "GFXCAMP.png",
+        "url": "http://www.gfxcamp.com/",
+        "description": "最新最热CG资源分享,龋齿一号GFXCamp,CG营地,视频素材,AE模板,CG教程,插件,软件"
+      },
+      {
+        "webName": "网易云课堂",
+        "icon": "wyy.png",
+        "url": "https://study.163.com/",
+        "description": "悄悄变强大！！！"
+      },
+      {
+        "webName": "中国大学MOOC",
+        "icon": "mooc.png",
+        "url": "https://www.icourse163.org/",
+        "description": "中国大学MOOC(慕课) 是国内优质的中文MOOC学习平台，由爱课程网携手网易云课堂打造。平台拥有包括985高校在内提供的千余门课程，其中首批获得认定的国家精品在线开放课程322门，占2017年获得认定课程总数的65.7%。每一个有提升愿望的人，都可以在这里学习优质高校课程，与名师零距离交流，并获得认证证书。"
+      },
+      {
+        "webName": "百度",
+        "icon": "baidu.png",
+        "url": "http://www.baidu.com",
+        "description": "全球领先的中文搜索引擎、致力于让网民更便捷地获取信息，找到所求。百度超过千亿的中文网页数据库，可以瞬间找到相关的搜索结果。"
+      },
+      {
+        "webName": "虎课网",
+        "icon": "huke.png",
+        "url": "https://huke88.com/",
+        "description": "虎课网是超过1800万用户信赖的自学平台，拥有海量设计、绘画、摄影、办公软件、职业技能等优质的高清教程视频，用户可以根据行业和兴趣爱好，自主选择学习内容，每天免费学习一个教程。"
+      }
+    ]
+  },
+  {
+    "icon": "icon-editor",
+    "baseUrl": "./imgs/creativityEditor/",
+    "class": "creativityEditor",
+    "tagName": "创意文案",
+    "webItems": [
+      {
+        "webName": "纽约客",
+        "icon": "niuyueke.png",
+        "url": "https://www.newyorker.com/",
+        "description": "《纽约客》的报道、简介、突发新闻、文化报道、播客、视频和漫画。"
+      },
+      {
+        "webName": "itsnicethat",
+        "icon": "itsnicethat.png",
+        "url": "https://www.itsnicethat.com/",
+        "description": "It's nice that"
+      },
+      {
+        "webName": "Deck of Briliance",
+        "icon": "Deck.png",
+        "url": "https://deckofbrilliance.com/zh-hans/",
+        "description": "帮助创意专业人士产生点子"
+      },
+      {
+        "webName": "设计癖",
+        "icon": "shejipi.png",
+        "url": "https://www.shejipi.com/",
+        "description": "关注设计癖 发现好设计"
+      },
+      {
+        "webName": "Voicer",
+        "icon": "voicer.png",
+        "url": "http://www.voicer.me/",
+        "description": "分享设计和生活的美学"
+      },
+      {
+        "webName": "Fubiz Media",
+        "icon": "FM.png",
+        "url": "http://www.fubiz.net/contact/",
+        "description": ""
+      },
+      {
+        "webName": "Gallery",
+        "icon": "gallery.png",
+        "url": "https://www.commarts.com/gallery",
+        "description": "通讯艺术的项目。"
+      },
+      {
+        "webName": "We Heart It",
+        "icon": "weheartit.png",
+        "url": "https://weheartit.com/",
+        "description": "时尚、壁纸、箴言、名人等等"
+      },
+      {
+        "webName": "文案狗",
+        "icon": "wenangou.png",
+        "url": "http://wenangou.com/",
+        "description": "给文案🐶一点灵感"
+      },
+      {
+        "webName": "文案迷",
+        "icon": "wenanmi.png",
+        "url": "http://www.wenanmi.com/",
+        "description": "文字是最好的表达方式"
+      },
+      {
+        "webName": "书格",
+        "icon": "shuge.png",
+        "url": "https://new.shuge.org/",
+        "description": "有品位的数字古籍图书馆"
+      },
+      {
+        "webName": "Mv Cat",
+        "icon": "mvcat.png",
+        "url": "https://www.mvcat.com/",
+        "description": "人生如戏，戏如人生，命由己造，相由心生。"
+      },
+      {
+        "webName": "小鸡词典",
+        "icon": "xjcd.png",
+        "url": "https://jikipedia.com/",
+        "description": "查网络流行语，就上小鸡词典。小鸡词典专注于网络流行语的收录和解释，以最快的速度在全网捕捉当下的网络热词。以简单明了，清晰易懂的形式，向用户介绍网络流行语的含义、来历、传播过程和引申义。用户不仅能够通过小鸡词典了解网络用语，还能接触到小众黑话、新梗热梗、弹幕用语、方言俚语等不同的流行文化，以及网友们自主创造的旧词新解等。"
+      }
+    ]
+  },
+  {
+    "icon": "icon-design",
+    "baseUrl": "./imgs/designCommunity/",
+    "class": "designCommunity",
+    "tagName": "设计社区",
+    "webItems": [
+      {
+        "webName": "豆瓣",
+        "icon": "douban.png",
+        "url": "https://www.douban.com/",
+        "description": "提供图书、电影、音乐唱片的推荐、评论和价格比较，以及城市独特的文化生活。"
+      }
+    ]
+  },
+  {
+    "icon": "icon-material",
+    "baseUrl": "./imgs/material/",
+    "class": "material",
+    "tagName": "素材资源",
+    "webItems": [
+      {
+        "webName": "沙沙野",
+        "icon": "ssy.png",
+        "url": "https://www.ssyer.com/",
+        "description": "让作品遇见全世界"
+      }
+    ]
+  }
+]
