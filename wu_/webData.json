@@ -250,5 +250,37 @@
         "description": "让作品遇见全世界"
       }
     ]
+  },
+  {
+    "icon": "icon-yaoyan",
+    "baseUrl": "./imgs/cheat/",
+    "class": "cheat",
+    "tagName": "谣言",
+    "webItems": [
+      {
+        "webName": "中国互联网联合辟谣平台",
+        "icon": "piyao.png",
+        "url": "https://www.piyao.org.cn/",
+        "description": "中国互联网联合辟谣平台"
+      },
+      {
+        "webName": "较真",
+        "icon": "jiaozhen.png",
+        "url": "https://fact.qq.com/",
+        "description": "专业事实查证平台"
+      },
+      {
+        "webName": "上海辟谣",
+        "icon": "shanghaipiyao.png",
+        "url": "http://piyao.jfdaily.com/",
+        "description": "上海网络辟谣平台，由上海市网信办和解放日报社·上海观察联合打造的权威辟谣平台。"
+      },
+      {
+        "webName": "中国科普网辟谣平台",
+        "icon": "kepu.png",
+        "url": "http://www.kepu.gov.cn/www/articlelist/yyfsj?pageSize=12",
+        "description": "中国科普网由中华人民共和国科学技术部主管、科普时报社运营，系我国成立最早的国家级科普平台，与《科普时报》共同构成科普全媒体平台"
+      }
+    ]
   }
 ]
